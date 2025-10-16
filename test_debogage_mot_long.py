@@ -4,7 +4,37 @@ from debogage_mot_long import mot_plus_long, pourcentage_mots_max  # Remplacer p
 # Tests pour mot_plus_long
 # ============================
 # TODO: Tests unitaires pour la fonction mot_plus_long (maximum 5 différents)
+def test_mot_plus_long_1():
+    animaux = ["chat", "chien", "éléphant", "souris", "hippopotame", 42, None, "oiseau"]
+    resultat = mot_plus_long(animaux)
 
+    assert resultat == "hippopotame"
+
+def test_mot_plus_long_2():
+    animaux = ["éléphant", "hippopotame", ""]
+    resultat = mot_plus_long(animaux)
+
+    assert resultat == "hippopotame"
+
+def test_mot_plus_long_3():
+    animaux = []
+    resultat = mot_plus_long(animaux)
+
+    assert resultat == None
+
+def test_mot_plus_long_4():
+    animaux = "chat"
+    resultat = mot_plus_long(animaux)
+
+    assert resultat == None
+
+def test_mot_plus_long_5():
+    animaux = [" chat ", "chien", "rat"]
+    resultat = mot_plus_long(animaux)
+
+    assert resultat == "chat"
+
+#def test_pourcentage_mots_max_6():
 # ============================
 # Tests pour pourcentage_mots_max
 # ============================

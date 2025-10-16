@@ -6,13 +6,19 @@ def mot_plus_long(liste_mots):
     :param liste_mots: liste de mots
     :return: le mot le plus long ou None si la liste est invalide ou vide
     """
+    if not isinstance(liste_mots, list): # ajouter
+        print(f"Impossible de trouver le mot le plus long dans {liste_mots}") #ajouter
+        return None #ajouter
+
     max_mot = ""
     try:
         for mot in liste_mots:
             try:
-                if len(mot) > len(max_mot):
-                    max_mot = mot
+                if len(mot.strip()) > len(max_mot): #ajouter .strip
+                    max_mot = mot.strip() #ajouter .strip
             except TypeError:
+                pass
+            except AttributeError:
                 pass
 
     except TypeError:
@@ -40,10 +46,18 @@ def pourcentage_mots_max(mots, taille):
     #       Indice : chaque mot valide mérite d’être compté, et seuls ceux qui sont suffisamment grands font grimper ton pourcentage !
     total_valide = 0
     count_sup = 0
+
     for mot in mots:
-        longueur = len(mot)
-        if longueur < taille:
-            count_sup = 1
+        try:
+            longueur = len(mot)
+            if longueur > taille: #changer < à >
+                count_sup += 1 #changer = à +=
+            total_valide += 1 #ligne ajouter
+        except TypeError: #ligne ajouter
+            pass #ligne ajouter
+        except AttributeError: #ligne ajouter
+            pass #ligne ajouter
+
 
     pourcentage = (count_sup / total_valide) * 100
     return round(pourcentage, 2)
